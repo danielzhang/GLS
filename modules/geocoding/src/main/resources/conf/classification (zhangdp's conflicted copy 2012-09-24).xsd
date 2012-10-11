@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.example.org/classification" xmlns:tns="http://www.example.org/classification"
+	elementFormDefault="qualified">
+	<!-- 该文档为分级评分规则表的XML Schema表: 节点名称统一大写英文单词，属性为小写英文单词 -->
+	<xsd:element name="CLASSIFICATION_RULE">
+		<!-- 文档根节点为 CLASSIFICATION RULE -->
+
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="SCORE" maxOccurs="1" minOccurs="1">
+				</xsd:element>
+				<xsd:element name="ENGINE" maxOccurs="unbounded"
+					minOccurs="1">
+					<xsd:complexType>
+						<xsd:sequence>
+							<!-- 文档根节点为 根节点中包含不少于一个的子节点：LEVEL -->
+							<!-- LEVEL的数量表述指定的分级数量 -->
+							<xsd:element name="LEVEL" maxOccurs="unbounded"
+								minOccurs="1">
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element name="LEVEL_SITUATION" minOccurs="1"
+											maxOccurs="unbounded">
+											<xsd:complexType>
+												<xsd:sequence>
+													<!-- LEVEL包含了一个或多个子节点LEVEL_ELEMENT -->
+													<!-- LEVEL_ELEMENT表述在该级别下所包含的要素如“2”，“6”等 -->
+													<xsd:element name="LEVEL_ELEMENT" minOccurs="1"
+														maxOccurs="unbounded">
+														<xsd:complexType>
+															<!-- LEVEL_ELEMENT包含1个必填属性 tag:为查询字段中包含要素的名称 如“2”，“6” -->
+															<xsd:attribute name="tag" type="xsd:string"
+																use="required"></xsd:attribute>
+															<!-- description为描述性能容 -->
+															<xsd:attribute name="description" type="xsd:string"></xsd:attribute>
+														</xsd:complexType>
+													</xsd:element>
+												</xsd:sequence>
+											</xsd:complexType>
+										</xsd:element>
+									</xsd:sequence>
+									<!-- 根节点包含两个必填属性 level 和 grade -->
+									<!-- level 表述所处级别 -->
+									<xsd:attribute name="level_index" type="xsd:integer"
+										use="required"></xsd:attribute>
+									<!-- grade 表述该级别对应的分数 -->
+									<!-- <xsd:attribute name="min_grade" type="xsd:integer" -->
+									<!-- use="required"></xsd:attribute> -->
+									<xsd:attribute name="grade" type="xsd:float" use="required"></xsd:attribute>
+								</xsd:complexType>
+							</xsd:element>
+						</xsd:sequence>
+						<xsd:attribute name="engine_name" type="xsd:string"></xsd:attribute>
+						<xsd:attribute name="engine_selector" type="xsd:string"></xsd:attribute>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

@@ -1,0 +1,84 @@
+JFDML JFormDesigner: "5.1.0.0.51" Java: "1.6.0_20" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq {par l {seq l {space :p:23:p, comp progressBar1:::::x}, seq l {space :::p, par t:::p {seq t {comp label1:::p::p, space u:::p, comp textField1:::p:239:p, space s:::p, comp comboBox1:::p::p, space u:::p, comp button1:::p::p}, seq t {comp label2:::p::p, space :::p, comp textField2::::237:x, space s:::p, comp comboBox2:::p::p, space u:::p, comp button6:::p::p}}, space :::p, par l {comp button5:::p::p, comp button4:::p::p}}, comp scrollPane1::l::699:x}, space :::p}, seq t {space :0:552:x, comp button2:::p:131:p, space :p:31:p}}"
+			"$verticalGroup": "par l {seq l {space :p:35:p, par b {comp label1::b:p::p, comp button1::b:p::p, comp button4::b:p::p, comp comboBox1::b:p::p, comp textField1::b:p::p}, space s:::p, par b {comp label2::b:p::p, comp button5::b:p::p, comp button6::b:p::p, comp comboBox2::b:p::p, comp textField2::b:p::p}, space :::p, comp scrollPane1:::p:691:p, space ::17:x, comp button2:::p::p, space :p:27:p, comp progressBar1:::p:28:p, space :::p}}"
+		} ) {
+			name: "cleanFrame"
+			"$sizePolicy": 0
+			"$locationPolicy": 1
+			"title": "数据清理"
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "选择文件："
+				"font": new java.awt.Font( "宋体", 0, 20 )
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textField1"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button1"
+				"text": "..."
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1ActionPerformed", true ) )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1ActionPerformed", true ) )
+			} )
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane1"
+				add( new FormComponent( "javax.swing.JTable" ) {
+					name: "table1"
+					"font": new java.awt.Font( "宋体", 0, 20 )
+				} )
+			} )
+			add( new FormComponent( "javax.swing.JProgressBar" ) {
+				name: "progressBar1"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button4"
+				"text": "清除空值项"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1ActionPerformed", true ) )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1ActionPerformed", true ) )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button4ActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button5"
+				"text": "合并重复项"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1ActionPerformed", true ) )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1ActionPerformed", true ) )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button5ActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label2"
+				"text": "选择区域文件："
+				"font": new java.awt.Font( "宋体", 0, 18 )
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textField2"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button6"
+				"text": "..."
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1ActionPerformed", true ) )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1ActionPerformed", true ) )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button6ActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JComboBox" ) {
+				name: "comboBox1"
+			} )
+			add( new FormComponent( "javax.swing.JComboBox" ) {
+				name: "comboBox2"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button2"
+				"text": "数据导入"
+				"font": new java.awt.Font( "宋体", 0, 22 )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button2ActionPerformed", true ) )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 315, 0 )
+			"size": new java.awt.Dimension( 720, 960 )
+		} )
+	}
+}

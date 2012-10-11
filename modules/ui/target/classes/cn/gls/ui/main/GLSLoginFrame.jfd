@@ -1,0 +1,58 @@
+JFDML JFormDesigner: "5.1.0.0.51" Java: "1.7.0_04" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq {space :::p, par l {comp label2:::::x, seq l {space :p:17:p, par l:::p {seq l {comp label1:::p:73:p, space :p:52:p, comp button1:::p::p, space :::x, comp button2:::p::p, space :p:33:p}, comp passwordField1::l::359:x, comp textField1::l::359:x}, space :0:16:x}}, space :::p}}"
+			"$verticalGroup": "par l {seq l {comp label2:::p:31:p, space ::57:x, comp textField1:::p:50:p, space :p:28:p, comp passwordField1:::p:43:p, space :p:53:p, par l {comp label1:::p:68:p, par b {comp button1::b:p::p, comp button2::b:p::p}}, space :p:23:p}}"
+		} ) {
+			name: "loginFrame"
+			"title": "GLS2012"
+			"iconImage": new com.jformdesigner.model.SwingIcon( 1, "D:\\Dropbox\\Photos\\照片\\IMG_8608_picself_1.jpg" )
+			"background": new java.awt.Color( 255, 0, 153, 255 )
+			"autoRequestFocus": false
+			"foreground": sfield java.awt.Color darkGray
+			"resizable": false
+			"font": new java.awt.Font( "Dialog", 0, 16 )
+			"type": enum java.awt.Window$Type POPUP
+			"alwaysOnTop": true
+			"$sizePolicy": 1
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textField1"
+				"background": new java.awt.Color( 230, 228, 227, 255 )
+				"horizontalAlignment": 0
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button1"
+				"text": "登陆"
+				"background": new java.awt.Color( 236, 229, 224, 255 )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1ActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "text"
+				"icon": new com.jformdesigner.model.SwingIcon( 0, "/img/touxiang.png" )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label2"
+				"text": "GLS   2012"
+				"verticalAlignment": 1
+				"horizontalAlignment": 0
+				"foreground": sfield java.awt.Color blue
+				"font": new java.awt.Font( "微软雅黑", 0, 20 )
+			} )
+			add( new FormComponent( "javax.swing.JPasswordField" ) {
+				name: "passwordField1"
+				"background": new java.awt.Color( 230, 228, 227, 255 )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button2"
+				"text": "取消"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 340, 120 )
+			"size": new java.awt.Dimension( 420, 380 )
+		} )
+	}
+}

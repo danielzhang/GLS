@@ -1,0 +1,138 @@
+JFDML JFormDesigner: "5.1.0.0.51" Java: "1.6.0_20" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq {par l {seq l {space :21:21:p, par l {comp label1::l:p:144:p, comp label2::l:p:144:p}, space :p:65:p, par l {comp textField1:::p:383:p, comp rIATextField1:::::x}, space ::51:x, comp button1:::p::p}, seq {par l {seq {space :121:121:p, comp title:::p:482:p}, seq {space :21:21:p, comp label3:::p:144:p, space :65:65:p, comp textField3:::p:383:p}, seq l {par l {seq l {space :21:21:p, comp label4:::p:144:p}, seq l {space :29:29:p, par l {comp label5:::p::p, comp label8:::p:130:p}}}, space :p:57:p, par l:::p {comp rIATextField2::::383:x, comp textField2::l::383:x, comp rIATextField3::l::383:x}}}, space :0:122:x}}, space :p:22:p}, seq t {space :0:381:x, comp button2:::p:141:p, space :p:64:p, comp button3:::p:141:p, space :p:30:p}, seq {space :::p, par l {comp progressBar1::::727:x, seq l {par l {seq l {comp label6:::p:144:p, space :83:83:p, comp checkBox1:::p::p, space :55:55:p, comp checkBox2:::p::p}, seq l {comp label7:::p:144:p, space :83:83:p, comp checkBox3:::p::p, space :55:55:p, comp checkBox4:::p::p}}, space :0:347:x}}, space :::p}}"
+			"$verticalGroup": "par l {seq {comp title:::p::p, space :47:47:p, par l {comp label1:::p:31:p, seq {space :4:4:p, comp textField1:::p:31:p}, seq {space :6:6:p, comp button1:::p::p}}, space :36:36:p, par b {comp label2::b:p::p, comp rIATextField1::b:p::p}, space :p:63:p, par l {comp label3:::p::p, seq {space :4:4:p, comp textField3:::p:29:p}}, space :59:59:p, par b {comp label4::b:p::p, comp rIATextField2::b:p::p}, space :p:57:p, par b {comp label5::b:p::p, comp rIATextField3::b:p::p}, space :p:65:p, par b {comp label8::b:p::p, comp textField2::b:p::p}, space :p:83:p, par l {comp label6:::p:37:p, comp checkBox1:::p::p, comp checkBox2:::p::p}, space :31:31:p, par l {comp label7:::p:37:p, comp checkBox3:::p::p, comp checkBox4:::p::p}, space s:::p, par b {comp button2::b:p::p, comp button3::b:p::p}, space :p:47:p, comp progressBar1:::p:38:p, space ::164:x}}"
+		} ) {
+			name: "GLSPlace"
+			"minimumSize": new java.awt.Dimension( 400, 500 )
+			"background": sfield java.awt.Color lightGray
+			"font": new java.awt.Font( "宋体", 0, 26 )
+			"title": "GLS"
+			"resizable": false
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "title"
+				"text": "地名词导入"
+				"font": new java.awt.Font( "微软雅黑", 0, 26 )
+				"horizontalAlignment": 0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "*选择文件："
+				"font": new java.awt.Font( "宋体", 0, 24 )
+				"horizontalAlignment": 0
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textField1"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button1"
+				"text": "...."
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1ActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label2"
+				"text": "*地名字段："
+				"font": new java.awt.Font( "宋体", 0, 24 )
+				"horizontalAlignment": 0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label3"
+				"text": "*地名级别："
+				"font": new java.awt.Font( "宋体", 0, 24 )
+				"horizontalAlignment": 0
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textField3"
+				addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "textField3FocusGained", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label4"
+				"text": "*地名类型："
+				"horizontalAlignment": 0
+				"font": new java.awt.Font( "宋体", 0, 24 )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label5"
+				"text": "城市字段名："
+				"font": new java.awt.Font( "宋体", 0, 24 )
+				"horizontalAlignment": 2
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label6"
+				"text": "合并地名："
+				"font": new java.awt.Font( "宋体", 0, 24 )
+				"horizontalAlignment": 2
+			} )
+			add( new FormComponent( "javax.swing.JCheckBox" ) {
+				name: "checkBox1"
+				"text": "是"
+				"font": &Font0 new java.awt.Font( "宋体", 0, 24 )
+				"selected": true
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "checkBox1ActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JCheckBox" ) {
+				name: "checkBox2"
+				"text": "否"
+				"font": &Font1 new java.awt.Font( "宋体", 0, 24 )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "checkBox2ActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label7"
+				"text": "删除后缀："
+				"font": new java.awt.Font( "宋体", 0, 24 )
+			} )
+			add( new FormComponent( "javax.swing.JCheckBox" ) {
+				name: "checkBox3"
+				"text": "是"
+				"font": #Font0
+				"selected": true
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "checkBox3ActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JCheckBox" ) {
+				name: "checkBox4"
+				"text": "否"
+				"font": #Font1
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "checkBox4ActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button2"
+				"text": "确定"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button2ActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button3"
+				"text": "取消"
+			} )
+			add( new FormComponent( "cn.gls.database.component.JRIATextField" ) {
+				name: "rIATextField1"
+				addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "rIATextField1FocusGained", true ) )
+			} )
+			add( new FormComponent( "cn.gls.database.component.JRIATextField" ) {
+				name: "rIATextField2"
+				addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "rIATextField2FocusGained", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JProgressBar" ) {
+				name: "progressBar1"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label8"
+				"text": "城市名称："
+				"font": new java.awt.Font( "宋体", 0, 24 )
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textField2"
+			} )
+			add( new FormComponent( "cn.gls.database.component.JRIATextField" ) {
+				name: "rIATextField3"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "rIATextField3ActionPerformed", true ) )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"size": new java.awt.Dimension( 765, 1065 )
+			"location": new java.awt.Point( 145, 60 )
+		} )
+	}
+}

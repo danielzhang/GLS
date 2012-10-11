@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+	<bean id="provinceOperator"
+		class="cn.gls.database.postgis.standard.PostGISProvinceOperator">
+		<property name="sqlMapClient" ref="sqlMapClient"></property>
+	</bean>
+	<bean id="cityOperator" class="cn.gls.database.postgis.standard.PostGISCityOperator">
+		<property name="sqlMapClient" ref="sqlMapClient"></property>
+	</bean>
+	<bean id="politicalOperator"
+		class="cn.gls.database.postgis.standard.PostGISPoliticalOperator">
+		<property name="sqlMapClient" ref="sqlMapClient"></property>
+	</bean>
+	<bean id="streetOperator" class="cn.gls.database.postgis.standard.PostGISStreetOperator">
+		<property name="sqlMapClient" ref="sqlMapClient"></property>
+	</bean>
+</beans>

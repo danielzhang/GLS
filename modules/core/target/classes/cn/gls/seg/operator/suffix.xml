@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fix>
+	<suffixStr>支弄、号院、号门、号楼、栋、区、单元、座、#、楼、号、室 、幢、院、弄</suffixStr>
+	<orientation>东、南、西、北、东南、西北、东北、西南、旁、相向、相邻</orientation>
+	<chineseera>甲、乙、丙、丁、戊、己、庚、辛、壬</chineseera>
+	<specificmark>-、_ 、(、*、)</specificmark>
+</fix>

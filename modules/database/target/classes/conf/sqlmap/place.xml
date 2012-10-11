@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="place">
+	<typeAlias alias="place" type="cn.gls.data.Place" />
+	<typeAlias alias="tyc" type="cn.gls.data.TycPlace" />
+	<typeAlias alias="pinyin" type="cn.gls.data.PinyinPlace" />
+	<resultMap class="place" id="PlaceResult">
+		<result property="name" column="name" />
+		<result property="placeLevel" column="p_level" />
+		<result property="cityCode" column="city_code" />
+		<result property="placeType" column="p_type" />
+<!-- 		<result property="pinyin" resultMap="place.pinyinPlaceResult" /> -->
+<!-- 		<result property="placeTycs" resultMap="place.tycResult" /> -->
+	</resultMap>
+	<resultMap class="pinyin" id="pinyinPlaceResult">
+		<result property="name" column="name" />
+		<result property="pName" column="p_name" />
+		<result property="cityCode" column="city_code" />
+		<result property="isStandard" column="is_standard" />
+	</resultMap>
+	<resultMap class="tyc" id="tycResult">
+		<result property="cityCode" column="city_code" />
+		<result property="name" column="name" />
+		<result property="stName" column="st_name" />
+	</resultMap>
+	<select id="selectPinyinsBypinyinName" resultMap="pinyinPlaceResult">
+		select
+		name,p_name,city_code,is_standard from p_pinyin where name=#name#
+		and city_code=#cityCode#
+	</select>
+	<select id="selectPlaceByStandardPlaceName" resultMap="PlaceResult">
+		select *
+		from p_place where name=#name# and city_code=#cityCode#
+	</select>
+	<select id="selectPlaceByTycPlaceName" resultMap="PlaceResult">
+		select * from
+		p_place where city_code=#cityCode# and name=(select st_name
+		from
+		p_thesaurus where name=#name# and city_code=#cityCode#)
+	</select>
+	<select id="selectCityCodeByName" resultClass="Integer">
+		select city_code
+		from p_place where name=#name#
+	</select>
+	<select id="selectTycByPlaceName" resultMap="tycResult">
+		select * from
+		p_thesaurus where name=#name# and city_code=#cityCode#
+	</select>
+	<select id="selectTycByStandardPlaceName" resultMap="tycResult">
+		select name,st_name,city_code from t_thesaurus where city_code=#cityCode#
+		and st_name=#st_name#
+	</select>
+
+   <select id="selectPlaceByName" parameterClass="java.util.HashMap" resultMap="PlaceResult">
+   select * from p_place where name=#placeName# and city_code=#cityCode#
+   </select>
+</sqlMap>

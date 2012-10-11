@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:sec="http://www.springframework.org/schema/security" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/mvc 
+        http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+      http://www.springframework.org/schema/aop
+      http://www.springframework.org/schema/aop/spring-aop-3.0.xsd"
+	default-autowire="byName">
+	<import resource="gls-propertyFileConfigurer.xml" />
+	<import resource="gls-database.xml" />
+	<import resource="standardTable.xml" />
+
+	<bean id="postgisOperator" class="cn.gls.database.postgis.standard.PostGISDataOperator"
+		init-method="initDataStore">
+		<property name="params" ref="parameterMap">
+		</property>
+	</bean>
+	<bean id="parameterMap" class="java.util.HashMap">
+		<constructor-arg>
+			<map>
+				<entry key="dbtype" value="${dbtype}"></entry>
+				<entry key="host" value="${host}"></entry>
+				<entry key="schema" value="${schema}"></entry>
+				<entry key="database" value="${database}"></entry>
+				<entry key="user" value="${user}"></entry>
+				<entry key="passwd" value="${passwd}"></entry>
+				<entry key="port" value="${port}"></entry>
+			</map>
+		</constructor-arg>
+	</bean>
+	<bean id="dataProcessing"
+		class="cn.gls.database.postgis.operator.assist.ThesaurusTableProcessing">
+		<property name="databaseAssistDao" ref="databaseAssistDao"></property>
+		</bean>
+	<bean id="fatherAndSonOperator"
+		class="cn.gls.database.postgis.operator.assist.FatherAndSonTableProcessing">
+		<property name="attributeOperator" ref="postGISAttributeOperator"></property>
+			<property name="databaseAssistDao" ref="databaseAssistDao"></property>
+	</bean>
+	<bean id="featureProcessing" class="cn.gls.database.util.FeaturePreProcessing">
+		<property name="attributeOperatorDao" ref="postGISAttributeOperator"></property>
+	</bean>
+	<bean id="gradeTableProcessing" class="cn.gls.database.postgis.operator.assist.GradeTableProcessing">
+		<property name="attributeOperator" ref="postGISAttributeOperator"></property>
+			<property name="databaseAssistDao" ref="databaseAssistDao"></property>
+	</bean>
+	<bean id="pinyinProcessing"
+		class="cn.gls.database.postgis.operator.assist.PinyinTableProcessing">
+		<property name="attributeOperator" ref="postGISAttributeOperator"></property>
+			<property name="databaseAssistDao" ref="databaseAssistDao"></property>
+	</bean>
+	<bean id="postGISAttributeOperator"
+		class="cn.gls.database.postgis.standard.PostGISAttributeOperator"></bean>
+	<bean id="dynamicLoadBean" class="cn.gls.database.DynamicLoadBean"></bean>
+<!-- 		<bean -->
+<!-- 		class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping" /> -->
+	<context:annotation-config />
+	<bean id="databaseAssistDao" class="cn.gls.database.postgis.GLSDatabaseAssistDaoImpl"></bean>
+
+</beans>

@@ -1,0 +1,32 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>modules</artifactId>
+		<groupId>cn.gls</groupId>
+		<version>1-SNAPSHOT</version>
+	</parent>
+	<groupId>cn.gls</groupId>
+	<artifactId>ui</artifactId>
+	<version>1-SNAPSHOT</version>
+	<name>gls的界面</name>
+	<description>gls的界面</description>
+	<dependencies>
+		<dependency>
+			<groupId>cn.gls</groupId>
+			<artifactId>core</artifactId>
+			<version>1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>cn.gls</groupId>
+			<artifactId>database</artifactId>
+			<version>1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jdesktop</groupId>
+			<artifactId>beansbinding</artifactId>
+			<version>1.2.1</version>
+		</dependency>
+	</dependencies>
+
+</project>

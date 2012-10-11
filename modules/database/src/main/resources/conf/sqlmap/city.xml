@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="city">
+	<typeAlias alias="city" type="cn.gls.data.place.CityDTO" />
+	<typeAlias alias="province" type="cn.gls.data.place.ProvinceDTO" />
+
+	<resultMap class="city" id="cityResult">
+		<result property="name" column="city_name" />
+		<result property="cityCode" column="city_code" />
+	</resultMap>
+	
+	<parameterMap class="city" id="cityParameters">
+		<parameter property="provinceName" />
+		<parameter property="cityCode" />
+		<parameter property="name" />
+		<parameter property="stAddress" />
+		<parameter property="zipCode" nullValue="0" />
+		<parameter property="aType" />
+	</parameterMap>
+
+	<select id="selectProvinceByCity" parameterClass="String"
+		resultClass="String">
+		select province_name from p_province_city where
+		city_name =#city_name#
+	</select>
+	
+	<select id="selectProvinceCodeByProvinceName" parameterClass="String" resultClass="Integer">
+		select province_code from p_province_city where
+		province_name = #privince_name# limit 1
+	</select>
+	
+	  <select id="selectCityCodeByCityName" resultClass="Integer" >
+       select city_code from p_province_city where  instr(city_name,#cityName#)=1
+    </select>
+    
+	<select id="selectCityNameByCityCode" resultClass="String" parameterClass="Integer">
+		select city_name from p_province_city where
+		city_code=#CityCode#
+	</select>
+		<select id="selectCitys" resultMap="cityResult">
+		select city_name,city_code from p_province_city
+	</select>
+	
+	<select id="selectProvinceCity" resultClass="java.util.HashMap">
+		select * from
+		p_province_city
+	</select>
+	<select id="selectProvinceName" resultClass="String"
+		parameterClass="Integer">
+		select name from t_province where
+		province_code=#provinceCode#
+	</select>
+	<update id="updateProvinceCity" parameterMap="cityParameters">
+		update
+		p_province_city set
+		province_name=? where city_code=?
+	</update>
+	<insert id="insertCitys" parameterMap="cityParameters">
+		insert into st_a_city
+		(province_name,city_code,name,st_address,zip_code,a_type)
+		values(?,?,?,?,?,?)
+	</insert>
+	
+</sqlMap>

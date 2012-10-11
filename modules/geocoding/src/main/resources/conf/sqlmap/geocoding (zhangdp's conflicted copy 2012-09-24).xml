@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="geocoding">
+
+	<!--########################GeoCoding 对象 ###################################################### -->
+
+	<typeAlias alias="geocodingResult"
+		type="cn.gls.geocoding.engine.data.GeoCodingResult" />
+	<!-- 标准化地址对象 -->
+	<typeAlias alias="standardAddress" type="cn.gls.data.StandardAddress" />
+
+	<!-- 四至范围 -->
+	<typeAlias alias="viewport" type="cn.gls.geocoding.engine.data.ViewPort" />
+	<!-- 点坐标 -->
+	<!-- <typeAlias alias="point" type="cn.gls.data.Point" /> -->
+	<!-- <typeAlias alias="geometry" type="com.vividsolutions.jts.geom.Geometry" 
+		/> -->
+	<!-- 地理编码参数对象 -->
+	<!-- <typeAlias alias="geocodingAddress" -->
+	<!-- type="cn.gls.geocoding.engine.data.GeoCodingAddress"/> -->
+
+	<!-- ############################# Parameter Map ############################################### -->
+
+
+	<!-- <parameterMap class="geocodingAddress" id="PoliticalAddressParameter"> -->
+	<!-- <parameter property="province" /> -->
+	<!-- <parameter property="city" /> -->
+	<!-- <parameter property="county" /> -->
+	<!-- <parameter property="town" /> -->
+	<!-- <parameter property="village" /> -->
+	<!-- <parameter property="street" /> -->
+	<!-- <parameter property="name" /> -->
+	<!-- </parameterMap> -->
+
+
+	<!-- ############################################ Result Map ######################################### -->
+	<resultMap class="geocodingResult" id="CityGeoCodingResult">
+		<result property="address" resultMap="geocoding.CityAddressResult" />
+	</resultMap>
+	<resultMap class="standardAddress" id="CityAddressResult">
+		<result property="st_address" column="st_address" />
+		<result property="postal_code" column="zip_code" nullValue="0" />
+		<result property="addr_type" column="a_type" />
+		<result property="province" column="province_name" />
+		<result property="city" column="city_name" />
+		<result property="geoText" column="t_geom" />
+	</resultMap>
+
+
+
+	<resultMap class="geocodingResult" id="PoliticalGeoCodingResult">
+		<result property="address" resultMap="geocoding.PoliticalAddressResult" />
+	</resultMap>
+	<resultMap class="standardAddress" id="PoliticalAddressResult">
+		<result property="st_address" column="st_address" />
+		<result property="postal_code" column="zip_code" nullValue="0" />
+		<result property="addr_type" column="a_type" />
+		<result property="province" column="province_name" />
+		<result property="city" column="city_name" />
+		<result property="county" column="county_name" />
+		<result property="town" column="town_name" />
+		<result property="village" column="village_name" />
+		<result property="geoText" column="t_geom" />
+	</resultMap>
+
+
+
+
+	<resultMap class="geocodingResult" id="StreetGeoCodingResult">
+		<result property="address" resultMap="geocoding.StreetAddressResult" />
+	</resultMap>
+	<resultMap class="standardAddress" id="StreetAddressResult">
+		<result property="st_address" column="st_address" />
+		<result property="postal_code" column="zip_code" nullValue="0" />
+		<result property="addr_type" column="a_type" />
+		<result property="province" column="province_name" />
+		<result property="city" column="city_name" />
+		<result property="county" column="county_name" />
+		<result property="town" column="town_name" />
+		<result property="village" column="village_name" />
+		<result property="street" column="street_name" />
+		<result property="geoText" column="t_geom" />
+	</resultMap>
+
+	<resultMap class="geocodingResult" id="AddressGeoCodingResult">
+		<result property="address" resultMap="geocoding.AddressResult" />
+	</resultMap>
+	<resultMap class="standardAddress" id="AddressResult">
+		<result property="st_address" column="st_address" />
+		<result property="postal_code" column="zip_code" nullValue="0" />
+		<result property="addr_type" column="a_type" />
+		<result property="province" column="province_name" />
+		<result property="city" column="city_name" />
+		<result property="county" column="county_name" />
+		<result property="town" column="town_name" />
+		<result property="village" column="village_name" />
+		<result property="village_suffix" column="village_suffix" />
+		<result property="village_all" column="village_all" />
+		<result property="street" column="street_name" />
+		<result property="street_suffix" column="street_suffix" />
+		<result property="street_all" column="street_all" />
+		<result property="communitis" column="community_name" />
+		<result property="communitis_suffix" column="community_suffix" />
+		<result property="communitis_all" column="community_all" />
+		<result property="building" column="building_name" />
+		<result property="building_suffix" column="building_suffix" />
+		<result property="building_all" column="building_all" />
+		<result property="poiName" column="poi_name" />
+		<result property="geoText" column="t_geom" />
+	</resultMap>
+
+
+	<!-- <resultMap class="viewport" id="ViewPortResult"> -->
+	<!-- <result property="county" column="county_name" /> -->
+	<!-- <result property="town" column="town_name" /> -->
+	<!-- <result property="village" column="village_name" /> -->
+	<!-- <result property="village_suffix" column="village_suffix" /> -->
+	<!-- <result property="village_all" column="village_all" /> -->
+	<!-- <result property="street" column="street_name" /> -->
+	<!-- <result property="street_suffix" column="street_suffix" /> -->
+	<!-- <result property="street_all" column="street_all" /> -->
+	<!-- <result property="communitis" column="community_name" /> -->
+	<!-- <result property="communitis_suffix" column="community_suffix" /> -->
+	<!-- <result property="communitis_all" column="community_all" /> -->
+	<!-- <result property="building" column="building_name" /> -->
+	<!-- <result property="building_suffix" column="building_suffix" /> -->
+	<!-- <result property="building_all" column="building_all" /> -->
+	<!-- <result property="poiName" column="poi_name" /> -->
+	<!-- <result property="xmin" column="xmin" /> -->
+	<!-- <result property="xmax" column="xmax" /> -->
+	<!-- <result property="ymin" column="ymin" /> -->
+	<!-- <result property="ymax" column="ymax" /> -->
+	<!-- </resultMap> -->
+	<!-- #####################################################参数Map########################################################################### -->
+	<!-- <parameterMap class="standardAddress" id="StandardAddressParameter"> -->
+	<!-- <parameter property="province"/> -->
+	<!-- <parameter property="city"/> -->
+	<!-- <parameter property="county"/> -->
+	<!-- <parameter property="town"/> -->
+	<!-- <parameter property="village"/> -->
+	<!-- <parameter property="village_suffix"/> -->
+	<!-- <parameter property="village_all"/> -->
+
+	<!-- </parameterMap> -->
+	<!-- ##############################################################查询语句####################################################### -->
+
+	<!-- 城市引擎 -->
+	<select id="selectCityByAddress" resultMap="CityGeoCodingResult"
+		parameterClass="standardAddress">
+		select province_name,
+		city_name,st_address,a_type,zip_code,ST_AsText("the_geom") as t_geom
+		from
+		st_a_city
+		<dynamic prepend="where">
+			<isNotEmpty prepend="and" property="province">
+				province_name=#province#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="city">
+				city_name=#city#
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	<!-- 区域引擎 -->
+	<select id="selectPoliticalByAddress" resultMap="PoliticalGeoCodingResult"
+		parameterClass="standardAddress">
+		select
+		st_address,province_name,city_name,county_name,town_name,village_name,a_type,zip_code,ST_AsText("the_geom")
+		as t_geom
+		from
+		st_a_political
+		<dynamic prepend="where">
+			<isNotEmpty prepend="and" property="city">
+				city_name=#city#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="county">
+				county_name=#county#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="town">
+				town_name=#town#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="village">
+				village_name=#village#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="addr_type">
+				a_type=#addr_type#
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	<!-- 街道引擎 -->
+	<select id="selectStreetByAddress" resultMap="StreetGeoCodingResult"
+		parameterClass="standardAddress">
+		select
+		street_name,st_address,province_name,city_name,county_name,town_name,village_name,a_type,zip_code,
+		ST_AsText("the_geom")
+		as t_geom
+		from st_a_street
+		<dynamic prepend="where">
+
+			<isNotEmpty prepend="and" property="province">
+				province_name=#province#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="city">
+				city_name=#city#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="county">
+				county_name=#county#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="town">
+				town_name=#town#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="village">
+				village=#village#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="street">
+				street_name=#street#
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	<!-- 交叉口引擎 -->
+	<select id="selectIntersectionByAddress" resultMap="StreetGeoCodingResult"
+		parameterClass="standardAddress">
+		select
+		street_name,st_address,province_name,city_name,county_name,town_name,village_name,a_type,zip_code,
+		ST_AsText("the_geom")
+		as t_geom
+		from st_a_street
+		<dynamic prepend="where">
+			<isNotEmpty prepend="and" property="province">
+				province_name=#province#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="city">
+				city_name=#city#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="county">
+				county_name=#county#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="town">
+				town_name=#town#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="village">
+				village=#village#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="street">
+				instr(#street#,street_name)>0
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	<!-- 其他地址引擎 -->
+	<select id="selectAddress1" resultMap="AddressGeoCodingResult"
+		parameterClass="standardAddress">
+		select
+		st_address,province_name,city_name,county_name,town_name,village_name,village_suffix,village_all,street_name,street_suffix,street_all,community_name,community_suffix,community_all,building_name,building_suffix,building_all,poi_name,a_type,zip_code,
+		ST_AsText("the_geom")
+		as t_geom from st_a_address
+		<dynamic  prepend="where">
+			<isNotEmpty prepend="and" property="province">
+				province_name=#province#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="city">
+				city_name=#city#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="county">
+				county_name=#county#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="building">
+			building_name=#building#
+			</isNotEmpty>
+			 
+		</dynamic>
+	</select>
+	<select id="selectAddress2" resultMap="AddressGeoCodingResult"
+		parameterClass="standardAddress">
+		select
+		st_address,province_name,city_name,county_name,town_name,village_name,village_suffix,village_all,street_name,street_suffix,street_all,community_name,community_suffix,community_all,building_name,building_suffix,building_all,poi_name,a_type,zip_code,
+		ST_AsText("the_geom")
+		as t_geom from st_a_address
+		<dynamic  prepend="where">
+			<isNotEmpty prepend="and" property="province">
+				province_name=#province#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="city">
+				city_name=#city#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="county">
+				county_name=#county#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="communitis">
+			community_name=#communitis#
+			</isNotEmpty>
+			 
+		</dynamic>
+	</select>
+	<select id="selectAddress3" resultMap="AddressGeoCodingResult"
+		parameterClass="standardAddress">
+		select
+		st_address,province_name,city_name,county_name,town_name,village_name,village_suffix,village_all,street_name,street_suffix,street_all,community_name,community_suffix,community_all,building_name,building_suffix,building_all,poi_name,a_type,zip_code,
+		ST_AsText("the_geom")
+		as t_geom from st_a_address
+		<dynamic prepend="where">
+			<isNotEmpty prepend="and" property="province">
+				province_name=#province#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="city">
+				city_name=#city#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="county">
+				county_name=#county#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="street">
+			 street_name=#street#
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	<select id="selectAddress4" resultMap="AddressGeoCodingResult"
+		parameterClass="standardAddress">
+		select
+		st_address,province_name,city_name,county_name,town_name,village_name,village_suffix,village_all,street_name,street_suffix,street_all,community_name,community_suffix,community_all,building_name,building_suffix,building_all,poi_name,a_type,zip_code,
+		ST_AsText("the_geom")
+		as t_geom from st_a_address
+		<dynamic  prepend="where">
+			<isNotEmpty prepend="and" property="province">
+				province_name=#province#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="city">
+				city_name=#city#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="county">
+				county_name=#county#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="village">
+			 village_name=#village#
+			</isNotEmpty>
+		</dynamic>
+	</select>
+</sqlMap>

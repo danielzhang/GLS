@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+	<!-- <bean id="glsContextLoader" class="cn.gls.context.GLSContextLoader"> -->
+	<!-- </bean> -->
+	<!-- 中文分词引擎 -->
+	<bean id="segAddressEngine" class="cn.gls.seg.SegAddressEngine">
+		<property name="segWord" ref="autoSegWord"></property>
+		<property name="placeDao" ref="placeDao"></property>
+	</bean>
+
+	<bean id="autoSegWord" class="cn.gls.seg.AutoSegWord"></bean>
+	<bean id="addressOperator" class="cn.gls.database.postgis.standard.PostGISAddressOperator">
+		<property name="segAddressEngine" ref="segAddressEngine"></property>
+		<property name="placeDao" ref="placeDao"></property>
+		<property name="changeSupport" ref="changeAddressSupport"></property>
+	</bean>
+	<bean id="placeDao" class="cn.gls.place.dao.GLSPlaceDaoImpl">
+	</bean>
+	<bean id="changeAddressSupport" class="java.beans.PropertyChangeSupport">
+		<constructor-arg index="0" ref="addressOperator">
+		</constructor-arg>
+	</bean>
+</beans>

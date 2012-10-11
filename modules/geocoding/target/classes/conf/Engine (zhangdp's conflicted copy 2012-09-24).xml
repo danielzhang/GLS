@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Engine xmlns:tns="http://www.example.org/Engine" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.example.org/Engine Engine.xsd">
+
+	<AssistEngine show="true">
+		<PINEngine show="true"></PINEngine>
+		<ECEngine show="true"></ECEngine>
+		<ThesaurusEngine show="true"></ThesaurusEngine>
+		<SuggestEngine show="true"></SuggestEngine>
+	</AssistEngine>
+	<BaseEngine show="true">
+	</BaseEngine>
+
+</Engine>

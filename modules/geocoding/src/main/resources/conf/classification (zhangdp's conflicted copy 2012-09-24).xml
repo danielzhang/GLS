@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="GB2312"?>
+<tns:CLASSIFICATION_RULE xmlns:tns="http://www.example.org/classification"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.example.org/classification classification.xsd">
+	
+	<tns:SCORE>10</tns:SCORE>
+
+
+	<tns:ENGINE engine_name="地址" engine_selector="Address">
+	
+		<tns:weight>
+		    <tns:level tag="4" value="1"></tns:level>
+			<tns:level tag="5" value="2" ></tns:level>
+			<tns:level tag="6" value="4" ></tns:level>
+			<tns:level tag="16" value="4"></tns:level>
+			<tns:level tag="8" value="7"></tns:level>
+			<tns:level tag="18" value="4"></tns:level>
+			<tns:level tag="9" value="5"></tns:level>
+			<tns:level tag="19" value="3"></tns:level>
+			<tns:level tag="10" value="5"></tns:level>
+			<tns:level tag="20" value="3"></tns:level>
+		</tns:weight>
+	
+		<tns:LEVEL level_index="1">
+			<tns:LEVEL_SITUATION>
+				<tns:LEVEL_ELEMENT tag="10" description="大厦" />
+				<tns:LEVEL_ELEMENT tag="20" description="大厦后缀" />
+			</tns:LEVEL_SITUATION>
+			<tns:LEVEL_SITUATION>
+				<tns:LEVEL_ELEMENT tag="10" description="大厦" />
+			</tns:LEVEL_SITUATION>
+		</tns:LEVEL>
+
+		<tns:LEVEL level_index="2">
+			<tns:LEVEL_SITUATION>
+				<tns:LEVEL_ELEMENT tag="9" description="小区/学校" />
+				<tns:LEVEL_ELEMENT tag="19" description="小区/学校后缀" />
+			</tns:LEVEL_SITUATION>
+			<tns:LEVEL_SITUATION>
+				<tns:LEVEL_ELEMENT tag="9" description="小区/学校" />
+			</tns:LEVEL_SITUATION>
+		</tns:LEVEL>
+
+		<tns:LEVEL level_index="3">
+			<tns:LEVEL_SITUATION>
+				<tns:LEVEL_ELEMENT tag="8" description="道路" />
+			</tns:LEVEL_SITUATION>
+			<tns:LEVEL_SITUATION>
+				<tns:LEVEL_ELEMENT tag="8" description="道路" />
+				<tns:LEVEL_ELEMENT tag="18" description="道路后缀" />
+			</tns:LEVEL_SITUATION>
+		</tns:LEVEL>
+
+		<tns:LEVEL level_index="4">
+			<tns:LEVEL_SITUATION>
+				<tns:LEVEL_ELEMENT tag="16" />
+				<tns:LEVEL_ELEMENT tag="6"  />
+			</tns:LEVEL_SITUATION>
+			<tns:LEVEL_SITUATION>
+				<tns:LEVEL_ELEMENT tag="6" />
+			</tns:LEVEL_SITUATION>
+		</tns:LEVEL>
+		
+	</tns:ENGINE>
+
+
+	<tns:ENGINE engine_name="城市" engine_selector="city">
+		<tns:LEVEL grade="10" level_index="1">
+			<tns:LEVEL_SITUATION>
+				<tns:LEVEL_ELEMENT tag="3"/>
+			</tns:LEVEL_SITUATION>
+		</tns:LEVEL>
+	</tns:ENGINE>
+
+	<tns:ENGINE engine_name="区县行政区划" engine_selector="political">
+		<tns:LEVEL grade="30" level_index="1">
+			<tns:LEVEL_SITUATION>
+				<tns:LEVEL_ELEMENT tag="4" />
+			</tns:LEVEL_SITUATION>
+		</tns:LEVEL>
+	</tns:ENGINE>
+
+	<tns:ENGINE engine_name="镇行政区划" engine_selector="political">
+		<tns:LEVEL grade="40">
+			<tns:LEVEL_SITUATION>
+				<tns:LEVEL_ELEMENT tag="5"/>
+			</tns:LEVEL_SITUATION>
+		</tns:LEVEL>
+	</tns:ENGINE>
+	
+	<tns:ENGINE engine_name="村行政区划" engine_selector="political">
+		<tns:LEVEL grade="50" level_index="1">
+			<tns:LEVEL_SITUATION>
+				<tns:LEVEL_ELEMENT tag="6"/>
+			</tns:LEVEL_SITUATION>
+		</tns:LEVEL>
+	</tns:ENGINE>
+
+	<tns:ENGINE engine_name="路" engine_selector="road">
+		<tns:LEVEL grade="80" >
+			<tns:LEVEL_SITUATION>
+				<tns:LEVEL_ELEMENT tag="18"/>
+			</tns:LEVEL_SITUATION>
+		</tns:LEVEL>
+	</tns:ENGINE>
+
+	<tns:ENGINE engine_name="交叉口" engine_selector="intersection">
+		<tns:LEVEL grade="90" level_index="1">
+			<tns:LEVEL_SITUATION>
+				<tns:LEVEL_ELEMENT tag="7"  />
+			</tns:LEVEL_SITUATION>
+		</tns:LEVEL>
+	</tns:ENGINE>
+
+
+</tns:CLASSIFICATION_RULE>

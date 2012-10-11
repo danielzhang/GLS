@@ -1,0 +1,149 @@
+JFDML JFormDesigner: "5.1.0.0.51" Java: "1.6.0_20" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq {par l {seq l {space :::p, par t {comp button3:::p::p, comp progressBar1:::p:357:p}}, seq l {space :31:31:p, par l {comp label9:::p:110:p, seq l {par t:::p {seq l {par l {comp label11::l:p::p, comp label10::l:p:99:p}, space :p:45:p, par l {comp rIATextField8::t:::x, seq {comp button2:::p::p, space :0:0:x}, comp textField2:::::x, comp rIATextField9::t:::x}}, seq l {comp label8:::p:126:p, space u:::p, comp rIATextField7:::p:203:p}}, space :p:26:p, par l {comp button1:::p::p, comp button4:::p::p}}, par t:l::p {seq l {comp label7:::p::p, space :p:50:p, comp rIATextField6:::::x}, seq l {par l {par t:::p {comp label1::t:::x, comp label12::t:::x, comp label2::l:p::p, comp label3::l:p:101:p, comp label4::l:p:101:p, comp label5::t:::x}, comp label6:::p:126:p}, par l {seq {space :p:12:p, par l {comp rIATextField2:::p:209:p, par l:::p {comp textField1::::209:x, comp textField3::l::209:x, comp rIATextField1::l::209:x}, comp rIATextField3:::p:209:p, comp rIATextField4:::p:209:p}}, seq t {space :p:14:p, comp rIATextField5:::p:207:p}}}}}}}, space ::60:x}}"
+			"$verticalGroup": "par l {seq l {space :p:29:p, par t {comp button1:::p::p, comp textField1:::p::p, comp label1::t:p:28:p}, space :p:43:p, par b {comp label12::b:p::p, comp textField3::b:p::p, comp button4::b:p::p}, space :p:30:p, par b {comp label2::b:p::p, comp rIATextField1::b:p::p}, space :p:28:p, par b {comp label3::b:p::p, comp rIATextField2::b:p::p}, space :p:30:p, par b {comp label4::b:p:29:p, comp rIATextField3::b:p::p}, space :::x, par b {comp label5::b:p::p, comp rIATextField4::b:p::p}, space :p:23:p, par b {comp label6::b:p:34:p, comp rIATextField5::b:p::p}, space :p:30:p, par b {comp label7::b:p::p, comp rIATextField6::b:p::p}, space :p:27:p, par b {comp label8::b:p::p, comp rIATextField7::b:p::p}, space :p:23:p, par l {comp label10::t:p::p, comp rIATextField9::t:p::p}, space s:::p, par b {comp label11::b:p::p, comp textField2::b:p::p}, space :p:26:p, par b {comp label9::b:p::p, comp rIATextField8::b:p::p}, space :p:32:p, par b {comp button2::b:p::p, comp button3::b:p::p}, space s:::p, comp progressBar1:::p::p, space :::p}}"
+		} ) {
+			name: "addressFrame"
+			"$locationPolicy": 1
+			"minimumSize": new java.awt.Dimension( 400, 550 )
+			"title": "GLS地址导入"
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "*选择文件："
+				"font": new java.awt.Font( "宋体", 0, 22 )
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textField1"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button1"
+				"text": "..."
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1ActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label2"
+				"text": "城市字段："
+				"font": new java.awt.Font( "宋体", 0, 18 )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label3"
+				"text": "区县字段："
+				"font": new java.awt.Font( "宋体", 0, 18 )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label4"
+				"text": "乡镇字段："
+				"font": new java.awt.Font( "宋体", 0, 18 )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label5"
+				"text": "村庄字段："
+				"font": new java.awt.Font( "宋体", 0, 18 )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label6"
+				"text": "道路街道字段："
+				"font": new java.awt.Font( "宋体", 0, 18 )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label7"
+				"text": "小区字段："
+				"font": new java.awt.Font( "宋体", 0, 18 )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label8"
+				"text": "大厦字段："
+				"font": new java.awt.Font( "宋体", 0, 18 )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button2"
+				"text": "确定"
+				"font": new java.awt.Font( "宋体", 0, 20 )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button2ActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button3"
+				"text": "取消"
+				"font": new java.awt.Font( "宋体", 0, 20 )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button3ActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JProgressBar" ) {
+				name: "progressBar1"
+			} )
+			add( new FormComponent( "cn.gls.database.component.JRIATextField" ) {
+				name: "rIATextField1"
+				addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "rIATextField1FocusGained", true ) )
+			} )
+			add( new FormComponent( "cn.gls.database.component.JRIATextField" ) {
+				name: "rIATextField2"
+				addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "rIATextField2FocusGained", true ) )
+			} )
+			add( new FormComponent( "cn.gls.database.component.JRIATextField" ) {
+				name: "rIATextField3"
+				addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "rIATextField3FocusGained", true ) )
+			} )
+			add( new FormComponent( "cn.gls.database.component.JRIATextField" ) {
+				name: "rIATextField4"
+				addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "rIATextField4FocusGained", true ) )
+			} )
+			add( new FormComponent( "cn.gls.database.component.JRIATextField" ) {
+				name: "rIATextField5"
+				addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "rIATextField5FocusGained", true ) )
+			} )
+			add( new FormComponent( "cn.gls.database.component.JRIATextField" ) {
+				name: "rIATextField6"
+				addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "rIATextField6FocusGained", true ) )
+			} )
+			add( new FormComponent( "cn.gls.database.component.JRIATextField" ) {
+				name: "rIATextField7"
+				addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "rIATextField7FocusGained", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label9"
+				"text": "数据类型："
+				"font": new java.awt.Font( "宋体", 0, 20 )
+			} )
+			add( new FormComponent( "cn.gls.database.component.JRIATextField" ) {
+				name: "rIATextField8"
+				addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "rIATextField8FocusGained", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label10"
+				"text": "POI字段："
+				"font": new java.awt.Font( "宋体", 0, 18 )
+			} )
+			add( new FormComponent( "cn.gls.database.component.JRIATextField" ) {
+				name: "rIATextField9"
+				addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "rIATextField9FocusGained", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label11"
+				"text": "城市名称："
+				"font": new java.awt.Font( "宋体", 0, 18 )
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textField2"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label12"
+				"text": "选择区域文件"
+				"font": new java.awt.Font( "宋体", 0, 18 )
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textField3"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button4"
+				"text": "..."
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button4ActionPerformed", true ) )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 460, 15 )
+			"size": new java.awt.Dimension( 530, 795 )
+		} )
+	}
+}

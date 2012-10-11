@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tables xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="tables.xsd">
+	<table name='st_a_province' type="1">
+		<descriptor>省级对应的表结构</descriptor>
+		<column name='fid'>
+			<defaultValue>0</defaultValue>
+			<bindingType>Integer</bindingType>
+			<descriptor>序列号</descriptor>
+		</column>
+		<column name='name'>
+			<defaultValue></defaultValue>
+			<bindingType>String</bindingType>
+			<descriptor>地址名称</descriptor>
+		</column>
+
+		<column name='province_code'>
+			<defaultValue></defaultValue>
+			<bindingType>Integer</bindingType>
+			<descriptor>省代码</descriptor>
+		</column>
+
+		<column name='zip_code'>
+			<defaultValue></defaultValue>
+			<bindingType>Integer</bindingType>
+			<descriptor>省邮编</descriptor>
+		</column>
+
+		<column name='st_address'>
+			<defaultValue></defaultValue>
+			<bindingType>String</bindingType>
+			<descriptor>标准地址</descriptor>
+		</column>
+
+		<column name='a_type'>
+			<defaultValue>省行政区</defaultValue>
+			<bindingType>String</bindingType>
+			<descriptor>省级别的行政区划</descriptor>
+		</column>
+		<geoColumn name="the_geom">
+
+		</geoColumn>
+
+	</table>
+
+
+	<table name='st_a_city' type="2">
+		<descriptor>市级对应的表结构</descriptor>
+		<column name='fid'>
+			<defaultValue>0</defaultValue>
+			<bindingType>Integer</bindingType>
+			<descriptor>序列号</descriptor>
+		</column>
+		<column name='city_name'>
+			<defaultValue></defaultValue>
+			<bindingType>String</bindingType>
+			<descriptor>城市地址名称</descriptor>
+		</column>
+		<column name='province_name'>
+			<defaultValue></defaultValue>
+			<bindingType>String</bindingType>
+			<descriptor>省名称</descriptor>
+		</column>
+		<column name='zip_code'>
+			<defaultValue></defaultValue>
+			<bindingType>Integer</bindingType>
+			<descriptor>邮编</descriptor>
+		</column>
+		<column name='st_address'>
+			<defaultValue></defaultValue>
+			<bindingType>String</bindingType>
+			<descriptor>标准地址</descriptor>
+		</column>
+		<column name='city_code'>
+			<defaultValue></defaultValue>
+			<bindingType>Integer</bindingType>
+			<descriptor>城市代码</descriptor>
+		</column>
+		<column name='a_type'>
+			<defaultValue>城市行政区</defaultValue>
+			<bindingType>String</bindingType>
+			<descriptor>城市级别的行政区划</descriptor>
+		</column>
+		<geoColumn name="the_geom">
+
+		</geoColumn>
+	</table>
+
+	<table name='st_a_political' type="3">
+		<descriptor>行政区级对应的表结构</descriptor>
+		<column name='fid'>
+			<defaultValue>0</defaultValue>
+			<bindingType>Integer</bindingType>
+			<descriptor>序列号</descriptor>
+		</column>
+		<column name='province_name'>
+			<defaultValue></defaultValue>
+			<bindingType>String</bindingType>
+			<descriptor>省名称</descriptor>
+		</column>
+		<column name='zip_code'>
+			<defaultValue></defaultValue>
+			<bindingType>Integer</bindingType>
+			<descriptor>邮编</descriptor>
+		</column>
+		<column name='st_address'>
+			<defaultValue></defaultValue>
+			<bindingType>String</bindingType>
+			<descriptor>标准地址</descriptor>
+		</column>
+		<column name='city_code'>
+			<defaultValue></defaultValue>
+			<bindingType>Integer</bindingType>
+			<descriptor>城市代码</descriptor>
+		</column>
+		<column name='a_type'>
+			<defaultValue>城市行政区</defaultValue>
+			<bindingType>String</bindingType>
+			<descriptor>城市级别的行政区划</descriptor>
+		</column>
+		<column name='city_name'>
+			<defaultValue></defaultValue>
+			<bindingType>String</bindingType>
+			<descriptor>城市名称</descriptor>
+		</column>
+		<column name='county_name'>
+			<defaultValue></defaultValue>
+			<bindingType>String</bindingType>
+			<descriptor>区划名称</descriptor>
+		</column>
+		<column name='town_name'>
+			<defaultValue></defaultValue>
+			<bindingType>String</bindingType>
+			<descriptor>行政区名称</descriptor>
+		</column>
+		<column name='village_name'>
+			<defaultValue></defaultValue>
+			<bindingType>String</bindingType>
+			<descriptor>乡村名称</descriptor>
+		</column>
+		<column name="gxmin">
+			<defaultValue></defaultValue>
+			<bindingType>Integer</bindingType>
+			<descriptor>x最小值</descriptor>
+		</column>
+		<column name="gxmax">
+			<defaultValue></defaultValue>
+			<bindingType>Integer</bindingType>
+			<descriptor>x最大值</descriptor>
+		</column>
+		<column name="gymin">
+			<defaultValue></defaultValue>
+			<bindingType>Integer</bindingType>
+			<descriptor>y最小值</descriptor>
+		</column>
+		<column name="gymax">
+			<defaultValue></defaultValue>
+			<bindingType>Integer</bindingType>
+			<descriptor>x最大值</descriptor>
+		</column>
+		<geoColumn name="the_geom">
+		</geoColumn>
+	</table>
+	<table name='st_a_street' type="4">
+		<descriptor>街道级对应的表结构</descriptor>
+		<column name='fid'>
+			<defaultValue></defaultValue>
+			<bindingType>Integer</bindingType>
+			<descriptor>地址ID</descriptor>
+		</column>
+		<column name='street_name'>
+			<defaultValue />
+			<bindingType>String</bindingType>
+			<descriptor>地址名称</descriptor>
+		</column>
+		<column name='province_name'>
+			<defaultValue></defaultValue>
+			<bindingType>String</bindingType>
+			<descriptor>省名称</descriptor>
+		</column>
+		<column name='zip_code'>
+			<defaultValue></defaultValue>
+			<bindingType>Integer</bindingType>
+			<descriptor>邮编</descriptor>
+		</column>
+		<column name='st_address'>
+			<defaultValue></defaultValue>
+			<bindingType>String</bindingType>
+			<descriptor>标准地址</descriptor>
+		</column>
+		<column name='city_code'>
+			<defaultValue></defaultValue>
+			<bindingType>Integer</bindingType>
+			<descriptor>城市代码</descriptor>
+		</column>
+		<column name='a_type'>
+			<defaultValue>城市行政区</defaultValue>
+			<bindingType>String</bindingType>
+			<descriptor>城市级别的行政区划</descriptor>
+		</column>
+		<column name='city_name'>
+			<defaultValue></defaultValue>
+			<bindingType>String</bindingType>
+			<descriptor>城市名称</descriptor>
+		</column>
+		<column name='county_name'>
+			<defaultValue></defaultValue>
+			<bindingType>String</bindingType>
+			<descriptor>区划名称</descriptor>
+		</column>
+		<column name='town_name'>
+			<defaultValue></defaultValue>
+			<bindingType>String</bindingType>
+			<descriptor>行政区名称</descriptor>
+		</column>
+		<column name='village_name'>
+			<defaultValue></defaultValue>
+			<bindingType>String</bindingType>
+			<descriptor>乡村名称</descriptor>
+		</column>
+		<column name="gxmin">
+			<defaultValue></defaultValue>
+			<bindingType>Integer</bindingType>
+			<descriptor>x最小值</descriptor>
+		</column>
+		<column name="gxmax">
+			<defaultValue></defaultValue>
+			<bindingType>Integer</bindingType>
+			<descriptor>x最大值</descriptor>
+		</column>
+		<column name="gymin">
+			<defaultValue></defaultValue>
+			<bindingType>Integer</bindingType>
+			<descriptor>y最小值</descriptor>
+		</column>
+		<column name="gymax">
+			<defaultValue></defaultValue>
+			<bindingType>Integer</bindingType>
+			<descriptor>x最大值</descriptor>
+		</column>
+		<geoColumn name="the_geom">
+
+		</geoColumn>
+	</table>
+
+	<table name='st_a_poi' type="5">
+		<descriptor>兴趣点对应的表结构</descriptor>
+		<column name='fid'>
+			<defaultValue></defaultValue>
+			<bindingType>Integer</bindingType>
+			<descriptor>地址ID</descriptor>
+		</column>
+		<column name='poi_name'>
+			<defaultValue />
+			<bindingType>String</bindingType>
+			<descriptor>POI名称</descriptor>
+		</column>
+		<column name='province_name'>
+			<defaultValue></defaultValue>
+			<bindingType>String</bindingType>
+			<descriptor>省名称</descriptor>
+		</column>
+		<column name='zip_code'>
+			<defaultValue></defaultValue>
+			<bindingType>Integer</bindingType>
+			<descriptor>邮编</descriptor>
+		</column>
+		<column name='st_address'>
+			<defaultValue></defaultValue>
+			<bindingType>String</bindingType>
+			<descriptor>标准地址</descriptor>
+		</column>
+		<column name='city_code'>
+			<defaultValue></defaultValue>
+			<bindingType>Integer</bindingType>
+			<descriptor>城市代码</descriptor>
+		</column>
+		<column name='a_type'>
+			<defaultValue>城市行政区</defaultValue>
+			<bindingType>String</bindingType>
+			<descriptor>城市级别的行政区划</descriptor>
+		</column>
+		<column name='city_name'>
+			<defaultValue></defaultValue>
+			<bindingType>String</bindingType>
+			<descriptor>城市名称</descriptor>
+		</column>
+		<column name='county_name'>
+			<defaultValue></defaultValue>
+			<bindingType>String</bindingType>
+			<descriptor>区划名称</descriptor>
+		</column>
+		<column name='town_name'>
+			<defaultValue></defaultValue>
+			<bindingType>String</bindingType>
+			<descriptor>行政区名称</descriptor>
+		</column>
+		<column name='village_name'>
+			<defaultValue></defaultValue>
+			<bindingType>String</bindingType>
+			<descriptor>乡村名称</descriptor>
+		</column>
+		<column name='village_suffix'>
+			<defaultValue></defaultValue>
+			<bindingType>String</bindingType>
+			<descriptor>乡村后缀名</descriptor>
+		</column>
+				<column name='village_all'>
+			<defaultValue></defaultValue>
+			<bindingType>String</bindingType>
+			<descriptor>乡村全名</descriptor>
+		</column>
+		<column name='street_name'>
+			<defaultValue></defaultValue>
+			<bindingType>String</bindingType>
+			<descriptor>街道名称</descriptor>
+		</column>
+		<column name='street_suffix'>
+			<defaultValue></defaultValue>
+			<bindingType>String</bindingType>
+			<descriptor>街道号码</descriptor>
+		</column>
+		<column name='street_all'>
+			<defaultValue></defaultValue>
+			<bindingType>String</bindingType>
+			<descriptor>街道全名</descriptor>
+		</column>
+		<column name='community_name'>
+			<defaultValue></defaultValue>
+			<bindingType>String</bindingType>
+			<descriptor>小区名称</descriptor>
+		</column>
+		<column name='community_suffix'>
+			<defaultValue></defaultValue>
+			<bindingType>String</bindingType>
+			<descriptor>小区号码</descriptor>
+		</column>
+		<column name='community_all'>
+			<defaultValue></defaultValue>
+			<bindingType>String</bindingType>
+			<descriptor>小区全名</descriptor>
+		</column>
+		<column name='building_name'>
+			<defaultValue></defaultValue>
+			<bindingType>String</bindingType>
+			<descriptor>兴趣点名称</descriptor>
+		</column>
+		<column name='building_suffix'>
+			<defaultValue></defaultValue>
+			<bindingType>String</bindingType>
+			<descriptor>兴趣点名称</descriptor>
+		</column>
+		<column name='building_all'>
+			<defaultValue></defaultValue>
+			<bindingType>String</bindingType>
+			<descriptor>兴趣点全名</descriptor>
+		</column>
+		<column name='address'>
+			<defaultValue></defaultValue>
+			<bindingType>String</bindingType>
+			<descriptor>原始地址全名</descriptor>
+		</column>
+
+		<geoColumn name="the_geom">
+
+		</geoColumn>
+	</table>
+
+</tables>

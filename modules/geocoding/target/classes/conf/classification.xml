@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="GB2312"?>
+<!DOCTYPE classification >
+<classification xmlns:tns="http://www.example.org/classification"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.example.org/classification classification.xsd">
+	
+	<score>10</score>
+	<engine name="地址" selector="Address">
+		<weight>
+		    <level tag="4" value="1"/>
+			<level tag="5" value="2" />
+			<level tag="6" value="4" />
+			<level tag="16" value="4"/>
+			<level tag="8" value="7"/>
+			<level tag="18" value="4"/>
+			<level tag="9" value="5"/>
+			<level tag="19" value="3"/>
+			<level tag="10" value="5"/>
+			<level tag="20" value="3"/>
+		</weight>
+		<level index="1">
+			<situation>
+				<element tag="10" description="大厦" />
+				<element tag="20" description="大厦后缀" />
+			</situation>
+			<situation>
+				<element tag="10" description="大厦" />
+			</situation>
+		</level>
+
+		<level index="2">
+			<situation>
+				<element tag="9" description="小区/学校" />
+				<element tag="19" description="小区/学校后缀" />
+			</situation>
+			<situation>
+				<element tag="9" description="小区/学校" />
+			</situation>
+		</level>
+
+		<level index="3">
+			<situation>
+				<element tag="8" description="道路" />
+			</situation>
+			<situation>
+				<element tag="8" description="道路" />
+				<element tag="18" description="道路后缀" />
+			</situation>
+		</level>
+		<level index="4">
+			<situation>
+				<element tag="16" />
+				<element tag="6"  />
+			</situation>
+			<situation>
+				<element tag="6" />
+			</situation>
+		</level>
+	</engine>
+
+
+	<engine name="城市" selector="city">
+		<level grade="10" index="1">
+			<situation>
+				<element tag="3"/>
+			</situation>
+		</level>
+	</engine>
+
+	<engine name="区县行政区划" selector="political">
+		<level grade="30" index="1">
+			<situation>
+				<element tag="4" />
+			</situation>
+		</level>
+	</engine>
+
+	<engine name="镇行政区划" selector="political">
+		<level grade="40">
+			<situation>
+				<element tag="5"/>
+			</situation>
+		</level>
+	</engine>
+	
+	<engine name="村行政区划" selector="political">
+		<level grade="50"  index="1">
+			<situation>
+				<element tag="6"/>
+			</situation>
+		</level>
+	</engine>
+
+	<engine name="路" selector="road">
+		<level grade="80" >
+			<situation>
+				<element tag="18"/>
+			</situation>
+		</level>
+	</engine>
+
+	<engine name="交叉口" selector="intersection">
+		<level grade="90" index="1">
+			<situation>
+				<element tag="7"  />
+			</situation>
+		</level>
+	</engine>
+
+
+</classification>
