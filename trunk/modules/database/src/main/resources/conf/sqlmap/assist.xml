@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="assist">
+	<typeAlias alias="fatherAndSon" type="cn.gls.data.FatherAndSon" />
+	<typeAlias alias="tycPlace" type="cn.gls.data.TycPlace" />
+	<typeAlias alias="place" type="cn.gls.data.Place" />
+	<typeAlias alias="pinyin" type="cn.gls.data.PinyinPlace" />
+	<!-- 参数对象 -->
+
+	<parameterMap class="tycPlace" id="tycPlaceParameter">
+		<parameter property="cityCode" />
+		<parameter property="name" />
+		<parameter property="stName" />
+	</parameterMap>
+	<parameterMap class="fatherAndSon" id="fatherAndSonParameter">
+		<parameter property="cityCode" />
+		<parameter property="sonName" />
+		<parameter property="fatherName" />
+	</parameterMap>
+	<parameterMap class="pinyin" id="pinyinParameter">
+		<parameter property="name" />
+		<parameter property="pName" />
+		<parameter property="cityCode" />
+		<parameter property="isStandard" />
+	</parameterMap>
+
+	<!-- 返回结果对象 -->
+	<resultMap class="pinyin" id="pinyinResult">
+		<result property="pid" column="pid" />
+		<result property="name" column="name" />
+		<result property="pName" column="p_name" />
+		<result property="cityCode" column="city_code" />
+		<result property="isStandard" column="is_standard" />
+	</resultMap>
+	<insert id="insertTycs" parameterMap="tycPlaceParameter">
+		insert into p_thesaurus
+		(tid,city_code,name,st_name) values
+		(nextval('p_thesaurus_tid_seq'),?,?,?)
+	</insert>
+	<!-- 选择标准的城市名 -->
+	<select id="selectStandardCityName" parameterClass="String"
+		resultClass="String">
+		select st_name from p_thesaurus where name=#cityName#
+	</select>
+	<!-- 重置序列 -->
+	<select id="setProvinceSeq" parameterClass="Integer">
+		select
+		setval('st_province_seq',#fid#)
+	</select>
+	<select id="setCitySeq" parameterClass="Integer">
+		select
+		setval('st_city_seq',#fid#)
+	</select>
+	<select id="setPoliticalSeq" parameterClass="Integer">
+		select
+		setval('st_political_seq',#fid#)
+	</select>
+	<select id="setStreetSeq" parameterClass="Integer">
+		select
+		setval('st_street_seq',#fid#)
+	</select>
+	<select id="setGradeSeq" parameterClass="Integer">
+		select
+		setval('p_grade_seq',#gid#)
+	</select>
+	<select id="setPinyinSeq" parameterClass="Integer">
+		select
+		setval('p_pinyin_seq',#pid#)
+	</select>
+	<select id="setFatherAndSonSeq" parameterClass="Integer">
+		select
+		setval('p_father_son_fid_seq',#fsid#)
+	</select>
+	<select id="setAddressSeq" parameterClass="Integer">
+		select
+		setval('st_address_seq',#fid#)
+	</select>
+
+
+	<select id="getProvinceMaxSeq" resultClass="Integer">
+		select max(fid) from
+		st_a_province
+	</select>
+	<select id="getCityMaxSeq" resultClass="Integer">
+		select max(fid) from
+		st_a_city
+	</select>
+	<select id="getPoliticalMaxSeq" resultClass="Integer">
+		select max(fid) from
+		st_a_political
+	</select>
+	<select id="getStreetMaxSeq" resultClass="Integer">
+		select max(fid) from
+		st_a_street
+	</select>
+	<select id="selectMaxGradeSeq" resultClass="Integer">
+		select max(gid) from
+		p_place
+	</select>
+	<select id="selectPinyinMaxSeq" resultClass="Integer">
+		select max(pid) from
+		p_pinyin
+	</select>
+	<select id="selectFatherAndSonMaxSeq" resultClass="Integer">
+		select
+		max(fsid) from p_father_son
+	</select>
+	<select id="getAddressMaxSeq" resultClass="Integer">
+		select max(fid) from
+		st_a_address
+	</select>
+
+
+	<!-- 插入父子类对象 -->
+	<insert id="insertFatherAndSon" parameterClass="fatherAndSon">
+		insert into p_father_son (select * from (values
+		(nextval('p_father_son_fid_seq'),#sonName#,#fatherName#,#cityCode#))
+		as tmp (fsid,s_name,f_name,city_code) where not exists(select 1 from
+		p_father_son m where m.s_name=tmp.s_name and m.f_name=tmp.f_name and
+		m.city_code=tmp.city_code))
+	</insert>
+	<!-- 根据子类来查父类 -->
+	<select id="selectFatherNameBySonName" resultClass="String"
+		parameterClass="java.util.HashMap">
+		select f_name from p_father_son where
+		s_name=#sonName#
+		and city_code=#cityCode#
+	</select>
+	<!-- 查询父子类 -->
+	<select id="selectFatherAndSon" resultClass="Integer"
+		parameterMap="fatherAndSonParameter">
+		select fsid from p_father_son where city_code=? and
+		s_name=? and f_name=?
+	</select>
+	<!-- 插入等级表 -->
+	<insert id="inserGradeDataToTable" parameterClass="place">
+		insert into
+		p_place (select * from (values
+		(nextval('p_grade_seq'),#name#,#placeLevel#,#cityCode#,#placeType#))as
+		tmp (gid,name,p_level,city_code,p_type) where
+		not exists(select 1 from
+		p_place m where m.name=tmp.name and
+		m.p_level=tmp.p_level and
+		m.city_code=tmp.city_code))
+	</insert>
+	<!-- 查询等级表 -->
+	<select id="selectPlaces" resultClass="Integer" parameterClass="place">
+		select gid from p_place where name=#name# and p_level=#placeLevel# and
+		city_code=#cityCode#
+	</select>
+	<!-- pinyin -->
+	<select id="selectPinyinPlaceByPlace" parameterClass="pinyin"
+		resultMap="pinyinResult">
+		select pid,name,p_name,city_code,is_standard from p_pinyin
+		where name=#name#
+		and p_name=#pName# and city_code=#cityCode#
+	</select>
+
+	<insert id="insertPinyinPlace" parameterClass="pinyin">
+		INSERT INTO
+		p_pinyin
+		(SELECT * FROM( VALUES
+		(nextval('p_pinyin_seq'),#name#,#pName#,#cityCode#,TRUE)
+		) as tmp (pid,
+		name, p_name,city_code,is_standard)
+		WHERE NOT EXISTS (
+		SELECT 1 FROM
+		p_pinyin m where m.name= tmp.name and m.p_name=tmp.p_name)
+		)
+	</insert>
+
+
+</sqlMap>

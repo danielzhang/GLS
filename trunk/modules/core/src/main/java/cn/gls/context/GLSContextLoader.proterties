@@ -1,0 +1,8 @@
+##这个文件时针对中文地理编码的配置属性设定的
+###
+###
+###
+###
+placeStyle=data/style.xml
+ipaddressConfig=data/ip.txt
+spaceCharacter=[,  |]+

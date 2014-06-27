@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+	<bean id="provinceOperator"
+		class="cn.gls.database.postgis.standard.PostGISProvinceOperator">
+		<property name="sqlMapClient" ref="sqlMapClient"></property>
+		<property name="changeSupport" ref="changeprovinceSupport"></property>
+	</bean>
+	
+	<bean id="changeprovinceSupport" class="java.beans.PropertyChangeSupport">
+		<constructor-arg index="0" ref="provinceOperator">
+		</constructor-arg>
+	</bean>
+	
+	<bean id="cityOperator" class="cn.gls.database.postgis.standard.PostGISCityOperator">
+		<property name="sqlMapClient" ref="sqlMapClient"></property>
+		<property name="changeSupport" ref="changecitySupport"></property>
+	</bean>
+
+	<bean id="changecitySupport" class="java.beans.PropertyChangeSupport">
+		<constructor-arg index="0" ref="cityOperator">
+		</constructor-arg>
+	</bean>
+
+	<bean id="politicalOperator"
+		class="cn.gls.database.postgis.standard.PostGISPoliticalOperator">
+		<property name="sqlMapClient" ref="sqlMapClient"></property>
+		<property name="changeSupport" ref="changepoliticalSupport"></property>
+	</bean>
+
+	<bean id="changepoliticalSupport" class="java.beans.PropertyChangeSupport">
+		<constructor-arg index="0" ref="politicalOperator">
+		</constructor-arg>
+	</bean>
+
+	<bean id="streetOperator" class="cn.gls.database.postgis.standard.PostGISStreetOperator">
+		<property name="sqlMapClient" ref="sqlMapClient"></property>
+		<property name="changeSupport" ref="changestreetSupport"></property>
+	</bean>
+
+	<bean id="changestreetSupport" class="java.beans.PropertyChangeSupport">
+		<constructor-arg index="0" ref="streetOperator">
+		</constructor-arg>
+	</bean>
+</beans>

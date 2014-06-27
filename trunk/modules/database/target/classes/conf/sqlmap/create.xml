@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="create">
+	<select id="existTable" parameterClass="String" resultClass="java.lang.Object">
+		select 1 as tableNum from information_schema.tables where table_name =
+		#tableName#
+	</select>
+	<statement id="createPlaceSeq">
+		CREATE SEQUENCE p_grade_seq
+		START WITH 1
+		INCREMENT BY 1
+		NO MINVALUE
+		NO MAXVALUE
+		CACHE 1
+	</statement>
+	<statement id="createPlaceTable">
+		CREATE TABLE p_place (
+		gid numeric(15,0) DEFAULT nextval('p_grade_seq') NOT NULL,
+		name character varying(100) NOT NULL,
+		p_level numeric(4,0) NOT NULL,
+		city_code numeric(10,0) NOT NULL,
+		p_type character varying(30),
+		CONSTRAINT "dt_grade_pkey" PRIMARY KEY(gid),
+		CONSTRAINT "up_grade_ukey" UNIQUE (name,city_code,p_level)
+		)
+		with(
+		OIDS=false
+		)
+	</statement>
+
+	<statement id="createPinyinSeq">
+		CREATE SEQUENCE p_pinyin_seq
+		START WITH 1
+		INCREMENT BY 1
+		NO MINVALUE
+		NO MAXVALUE
+		CACHE 1
+	</statement>
+
+	<statement id="createPinyinTable">
+		CREATE TABLE p_pinyin (
+		pid numeric(15,0) DEFAULT nextval('p_pinyin_seq') NOT NULL,
+		name character varying(200) NOT NULL,
+		p_name character varying(100) NOT NULL,
+		city_code numeric(10,0) NOT NULL,
+		is_standard boolean NOT NULL,
+		CONSTRAINT "dt_pinyin_pkey" PRIMARY KEY(pid),
+		CONSTRAINT "up_pinyin_ukey" UNIQUE (name,p_name,city_code)
+		)
+	</statement>
+	<statement id="createFatherAndSonSeq">
+		CREATE SEQUENCE p_father_son_fid_seq
+		START WITH 1
+		INCREMENT BY 1
+		NO MINVALUE
+		NO MAXVALUE
+		CACHE 1
+	</statement>
+	<statement id="createFatherAndSonTable">
+		CREATE TABLE p_father_son (
+		fsid numeric(15,0) DEFAULT nextval('p_father_son_fid_seq') NOT NULL,
+		s_name character varying(100) NOT NULL,
+		f_name character varying(100) NOT NULL,
+		city_code numeric(10,0) NOT NULL,
+		CONSTRAINT "dt_fs_pkey" PRIMARY KEY(fsid),
+		CONSTRAINT "up_father_son_ukey" UNIQUE (s_name,f_name)
+		)
+	</statement>
+	<statement id="createTycSeq">
+		CREATE SEQUENCE p_thesaurus_tid_seq
+		START WITH 1
+		INCREMENT BY 1
+		NO MINVALUE
+		NO MAXVALUE
+		CACHE 1
+	</statement>
+	<statement id="createTycTable">
+		CREATE TABLE p_thesaurus (
+		tid numeric(15,0) DEFAULT nextval('p_thesaurus_tid_seq') NOT NULL,
+		name character varying(100) NOT NULL,
+		st_name character varying(100) NOT NULL,
+		city_code numeric(10,0) NOT NULL,
+		CONSTRAINT "dt_thesaurus_pkey" PRIMARY KEY(tid),
+		CONSTRAINT "up_thesaurus_ukey" UNIQUE (name,st_name,city_code)
+		)
+	</statement>
+	<statement id="createProvinceSeq">
+		CREATE SEQUENCE st_province_seq
+		START WITH 1
+		INCREMENT BY 1
+		NO MINVALUE
+		NO MAXVALUE
+		CACHE 1
+	</statement>
+
+	<statement id="createProvinceTable">
+		CREATE TABLE st_a_province (
+		fid numeric(15,0) DEFAULT nextval('st_province_seq') NOT NULL,
+		province_code numeric(10,0) NOT NULL,
+		province_name character varying(50),
+		st_address character varying(50) NOT NULL,
+		a_type character varying(30),
+		the_geom Geometry,
+		zip_code numeric(6,0),
+		CONSTRAINT dt_province_pkey PRIMARY KEY(province_code)
+		)
+	</statement>
+
+	<statement id="createCitySeq">
+		CREATE SEQUENCE st_city_seq
+		START WITH 1
+		INCREMENT BY 1
+		NO MINVALUE
+		NO MAXVALUE
+		CACHE 1
+	</statement>
+	<statement id="createCityTable">
+		CREATE TABLE st_a_city
+		(
+		fid numeric(15,0) DEFAULT nextval('st_city_seq') NOT NULL,
+		city_code numeric(10,0) NOT NULL,
+		city_name character varying(50),
+		st_address character varying(50) NOT NULL,
+		province_name character varying(30) NOT NULL,
+		a_type character varying(20),
+		the_geom Geometry,
+		zip_code numeric(6,0),
+		CONSTRAINT "dt_city_pkey" PRIMARY KEY (fid)
+		)
+		WITH (
+		OIDS=FALSE
+		)
+	</statement>
+
+	<statement id="createPoliticalSeq">
+		CREATE SEQUENCE st_political_seq
+		START WITH 1
+		INCREMENT BY 1
+		NO MINVALUE
+		NO MAXVALUE
+		CACHE 1
+	</statement>
+	<statement id="createPoliticalTable">
+		CREATE TABLE st_a_political(
+		fid numeric(15,0) DEFAULT nextval('st_political_seq') NOT NULL,
+		province_name character varying(30),
+		city_code numeric(10,0) NOT NULL,
+		city_name character varying(30),
+		county_name character varying(30),
+		town_name character varying(30),
+		village_name character varying(30),
+		st_address character varying(100),
+		the_geom Geometry,
+		a_type character varying(10),
+		zip_code numeric(6,0),
+		gxmin numeric(15,9),
+		gxmax numeric(15,9),
+		gymin numeric(15,9),
+		gymax numeric(15,9),
+		CONSTRAINT "dt_political_pkey" PRIMARY KEY (fid)
+		)
+	</statement>
+
+	<statement id="createStreetSeq">
+		CREATE SEQUENCE st_street_seq
+		START WITH 1
+		INCREMENT BY 1
+		NO MINVALUE
+		NO MAXVALUE
+		CACHE 1
+	</statement>
+	<statement id="createStreetTable">
+		CREATE TABLE st_a_street (
+		fid integer DEFAULT nextval('st_street_seq') NOT NULL,
+		street_name character varying(30) NOT NULL,
+		province_name character varying(30),
+		city_code numeric(10,0) NOT NULL,
+		city_name character varying(30) NOT NULL,
+		county_name character varying(30),
+		town_name character varying(30),
+		village_name character varying(30),
+		the_geom Geometry,
+		st_address character varying(100) NOT NULL,
+		a_type character varying(30),
+		zip_code numeric(6,0),
+		gxmin numeric(15,9),
+		gxmax numeric(15,9),
+		gymin numeric(15,9),
+		gymax numeric(15,9),
+		CONSTRAINT "dt_street_pkey" PRIMARY KEY (fid)
+		)
+	</statement>
+
+	<statement id="createAddressSeq">
+		CREATE SEQUENCE st_address_seq
+		START WITH 1
+		INCREMENT BY 1
+		NO MINVALUE
+		NO MAXVALUE
+		CACHE 1
+	</statement>
+
+	<statement id="createAddressTable">
+		CREATE TABLE st_a_address (
+		fid numeric(20,0) DEFAULT nextval('st_address_seq') NOT NULL,
+		poi_name character varying(100),
+		city_code numeric(10,0) NOT NULL,
+		province_name character varying(30),
+		city_name character varying(30),
+		county_name character varying(30),
+		town_name character varying(30),
+		village_name character varying(30),
+		village_suffix character varying(20),
+		village_all character varying(50),
+		street_name character varying(30),
+		street_suffix character varying(50),
+		street_all character varying(100),
+		community_name character varying(50),
+		community_suffix character varying(20),
+		community_all character varying(100),
+		building_name character varying(50),
+		building_suffix character varying(20),
+		building_all character varying(100),
+		address character varying(200),
+		the_geom Geometry,
+		a_type character varying(30),
+		zip_code numeric(6,0),
+		st_address character varying(200),
+		CONSTRAINT "dt_poi_pkey" PRIMARY KEY (fid)
+		)
+	</statement>
+	<statement id="createPlaceIndex">
+		CREATE INDEX "index_grade_name" ON "public"."p_place" ("name")
+	</statement>
+	<statement id="createPinyinIndex">
+		CREATE INDEX "index_pinyin_name" ON "public"."p_pinyin" ("name")
+	</statement>
+	<statement id="createTycIndex">
+		CREATE INDEX "index_thesaurus_name" ON "public"."p_thesaurus" USING btree
+		("name")
+	</statement>
+
+	<statement id="createSonIndex">
+		CREATE INDEX "index_son_name" ON "public"."p_father_son" USING btree
+		("s_name")
+	</statement>
+	<statement id="createFatherIndex">
+		CREATE INDEX "index_father_name" ON "public"."p_father_son" USING btree
+		("f_name")
+	</statement>
+	<statement id="createProvinceCodeIndex">
+		CREATE INDEX "index_province_code" ON "public"."st_a_province" USING btree
+		("province_code")
+	</statement>
+	<statement id="createProcinceNameIndex">
+		CREATE INDEX "index_province_name" ON "public"."st_a_province" USING btree
+		("province_name")
+	</statement>
+
+	<statement id="createCityCodeIndex">
+		CREATE INDEX "index_city_code" ON "public"."st_a_city" USING btree
+		("city_code")
+	</statement>
+
+	<statement id="createCityNameIndex">
+		CREATE INDEX "index_city_name" ON "public"."st_a_city" USING btree
+		("city_name")
+	</statement>
+
+	<statement id="createVillageIndex">
+		CREATE INDEX "index_political_village" ON "public"."st_a_political" USING
+		btree ("village_name")
+	</statement>
+	<statement id="createTownIndex">
+		CREATE INDEX "index_political_town" ON "public"."st_a_political" USING btree
+		("town_name")
+	</statement>
+
+	<statement id="createCountyIndex">
+		CREATE INDEX "index_political_county" ON "public"."st_a_political" USING
+		btree ("county_name")
+	</statement>
+
+	<statement id="createCityIndex">
+		CREATE INDEX "index_political_city" ON "public"."st_a_political" USING btree
+		("city_name")
+	</statement>
+
+	<statement id="createProvinceIndex">
+		CREATE INDEX "index_political_province" ON "public"."st_a_political" USING
+		btree ("province_name")
+	</statement>
+
+	<statement id="createPoliticalCityCodeIndex">
+		CREATE INDEX "index_political_city_code" ON "public"."st_a_political" USING
+		btree ("city_code")
+	</statement>
+
+	<statement id="createStreetProvinceIndex">
+		CREATE INDEX "index_street_province" ON "public"."st_a_street" USING btree
+		("province_name")
+	</statement>
+	<statement id="createStreetCityIndex">
+		CREATE INDEX "index_street_city" ON "public"."st_a_street" USING btree
+		("city_name")
+	</statement>
+	<statement id="createStreetCityCodeIndex">
+		CREATE INDEX "index_street_city_code" ON "public"."st_a_street" USING btree
+		("city_code")
+	</statement>
+
+	<statement id="createStreetCountyIndex">
+		CREATE INDEX "index_street_county" ON "public"."st_a_street" USING btree
+		("county_name")
+	</statement>
+
+	<statement id="createStreetTownIndex">
+		CREATE INDEX "index_street_town" ON "public"."st_a_street" USING btree
+		("town_name")
+	</statement>
+	<statement id="createStreetVillageIndex">
+		CREATE INDEX "index_street_village" ON "public"."st_a_street" USING btree
+		("village_name")
+	</statement>
+
+	<statement id="createStreetStreetIndex">
+		CREATE INDEX "index_street_street" ON "public"."st_a_street" USING btree
+		("street_name")
+	</statement>
+	<!-- address Index -->
+	<statement id="createAddressProvinceIndex">
+		CREATE INDEX "index_address_province" ON "public"."st_a_address" USING btree
+		("province_name")
+	</statement>
+	<statement id="createAddressCityIndex">
+		CREATE INDEX "index_address_city" ON "public"."st_a_address" USING btree
+		("city_name")
+	</statement>
+	<statement id="createAddressCityCodeIndex">
+		CREATE INDEX "index_address_city_code" ON "public"."st_a_address" USING
+		btree ("city_code")
+	</statement>
+
+	<statement id="createAddressCountyIndex">
+		CREATE INDEX "index_address_county" ON "public"."st_a_address" USING btree
+		("county_name")
+	</statement>
+
+	<statement id="createAddressTownIndex">
+		CREATE INDEX "index_address_town" ON "public"."st_a_address" USING btree
+		("town_name")
+	</statement>
+	<statement id="createAddressVillageIndex">
+		CREATE INDEX "index_address_village" ON "public"."st_a_address" USING btree
+		("village_name")
+	</statement>
+
+	<statement id="createAddressStreetIndex">
+		CREATE INDEX "index_address_street" ON "public"."st_a_address" USING btree
+		("street_name")
+	</statement>
+
+	<statement id="createAddressComminutiesIndex">
+		CREATE INDEX "index_address_community" ON "public"."st_a_address" USING
+		btree ("community_name")
+	</statement>
+	<statement id="createAddressBuildingIndex">
+		create index "index_address_building" on "public"."st_a_address" USING btree
+		("building_name")
+	</statement>
+
+	
+	<statement id="existTableIndex" parameterClass="java.lang.String" resultClass="java.lang.Object">
+		select * from pg_indexes where indexname=#indexName#
+	</statement>
+
+
+
+</sqlMap>

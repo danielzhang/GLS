@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+
+	<!-- 所有后缀 -->
+	<suffix>栋、区、单元、号楼、座、号院、#、楼、号、室 、幢、号门、院、弄、支弄</suffix>
+	<orientation>东、南、西、北、东南、西北、东北、西南、旁、相向、相邻</orientation>
+	<chineseera>甲、乙、丙、丁、戊、己、庚、辛、壬</chineseera>
+     <!-- 数字表 -->
+     <digit>1、2、3、4、5、6、7、8、9、0</digit>
+	<!-- 各个级别的后缀 -->
+	<country>国</country>
+	<province>省</province>
+	<city>市</city>
+	<county>区、县</county>
+	<town>乡、镇</town>
+	<village>村、社区、庄</village>
+	<villageSuffix>号</villageSuffix>
+	<street>路、街、大街、小街、道路、巷、胡同、路口、桥、高速入口、出口、入口、大道、隧道</street>
+	<streetSuffix>号、号楼、弄、支弄</streetSuffix>
+	<community>小区、公寓、大学、中学、小学、幼儿园、别墅、花园、名园、坊、新城、花苑、新村、佳苑、社区、香舍、名苑、家园、居、苑、庭</community>
+	<communitySuffix>区、院、门</communitySuffix>
+	<building>大厦、大楼、中心、商厦、办公楼、商务广场、广场、商务楼、商务园、工业楼宇、楼宇、地带、创意园、新楼、国际城</building>
+	<buildingSuffix>座、栋、门、号楼、号门</buildingSuffix>
+	<!-- 同义词的处理 -->
+	
+	
+</root>

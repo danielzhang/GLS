@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.example.org/tables"  xmlns ="http://www.example.org/tables"
+	elementFormDefault="qualified">
+	<!-- 该文档为分级评分规则表的XML Schema表: 节点名称统一大写英文单词，属性为小写英文单词 -->
+	<xsd:element name="tables">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="table" maxOccurs="unbounded"
+					minOccurs="1">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="descriptor" maxOccurs="1"></xsd:element>
+							<xsd:element name="column" maxOccurs="unbounded"
+								minOccurs="1">
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element name="defaultValue" maxOccurs="1"></xsd:element>
+										<xsd:element name="bindingType" maxOccurs="1"></xsd:element>
+										<xsd:element name="descriptor" maxOccurs="1"></xsd:element>
+									</xsd:sequence>
+									<xsd:attribute name="name" type="xsd:string" use="required"></xsd:attribute>
+								</xsd:complexType>
+							</xsd:element>
+							<xsd:element name="geoColumn" maxOccurs="1"></xsd:element>
+						</xsd:sequence>
+						<xsd:attribute name="name" type="xsd:string" use="required"></xsd:attribute>
+						<xsd:attribute name="type" type="xsd:integer" use="required"></xsd:attribute>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>
